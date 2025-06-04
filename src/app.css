@@ -126,21 +126,16 @@ body {
 /* ESTILOS BASE DEL HEADER */
 .main-header {
   background-color: #ffffff;
-  position: static;
+  position:absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 1.5rem 3rem;
+  padding: 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition:
-    background-color 0.4s ease,
-    padding 0.4s ease,
-    box-shadow 0.4s ease,
-    backdrop-filter 0.4s ease;
-
+  
 }
 
 /* ESTILOS DEL BOTÓN DEL LOGO (ACCESIBLE) */
