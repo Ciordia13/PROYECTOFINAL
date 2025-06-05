@@ -431,3 +431,59 @@ body {
   font-size: 0.85rem;
   color: #f0f0f0;
 }
+.contenedor-filtro {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-filtros-dia {
+  position: absolute;
+  top: 0;
+  left: 55px; /* aparece al costado del botón */
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  z-index: 999;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+
+.boton-filtro-dia:hover {
+  transform: scale(1.1);
+}
+
+
+.menu-filtros-dia button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Karla', sans-serif;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.menu-filtros-dia button:hover {
+  background-color: #f2f2f2;
+}
+
+.titulo-con-filtro {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding-left: 40px;
+  margin-bottom: 16px;
+  margin-top: -20px;
+}
+
+.titulo-con-filtro h2 {
+  font-weight: bold;
+  font-size: 1.6rem;
+  color: #d43f3a;
+  margin: 0;
+}

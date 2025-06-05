@@ -106,6 +106,34 @@
   let mostrarReferencias = false;
   let menuAbierto = false;
 
+  let menuFiltroAbierto = false;
+  let submenuAbierto = false;
+
+  let filtroGenero = [];
+  let filtroTiempo = [];
+  let filtroEnergia = [];
+  let filtroAccion = [];
+
+  function toggleFiltro(valor, lista) {
+  const index = lista.indexOf(valor);
+  if (index === -1) {
+    lista.push(valor);
+  } else {
+    lista.splice(index, 1);
+  }
+}
+function filtrarGlobal(datos) {
+  return datos.filter(d => {
+    const tiempoOk = filtroTiempo.length === 0 || filtroTiempo.some(t => d.minutos >= t);
+    const generoOk = filtroGenero.length === 0 || filtroGenero.includes(d.genero);
+    const energiaOk = filtroEnergia.length === 0 || filtroEnergia.includes(d.energia);
+    const accionOk = filtroAccion.length === 0 || filtroAccion.some(a => d.actividad.toLowerCase().includes(a));
+
+    return tiempoOk && generoOk && energiaOk && accionOk;
+  });
+}
+
+
 
   import { onMount, onDestroy } from "svelte";
   let header;
@@ -171,11 +199,25 @@
     <section id="sectionPin1">
       <div class="pin-wrap-sticky">
         <div class="pin-wrap">
-          <div class="pentagrama">
-            <h2 >
-              <b>Viernes</b>
-            </h2>
+          <div class="titulo-con-filtro">
+              <h2>Viernes</h2>
+              <div class="contenedor-filtro">
+                <button class="boton-filtro-dia" on:click={() => menuFiltroAbierto = !menuFiltroAbierto}>
+                  <i class="fa-solid fa-filter"></i>
+                </button>
+                {#if menuFiltroAbierto}
+                  <div class="menu-filtros-dia">
+                    <button on:click={() => toggleFiltro("Reggeaton", filtroGenero)}>Reggeaton {filtroGenero.includes("Reggeaton") ? "✔️" : ""}</button>
+                    <button on:click={() => toggleFiltro("Rock", filtroGenero)}>Rock {filtroGenero.includes("Rock") ? "✔️" : ""}</button>
+                    <button on:click={() => toggleFiltro("Cumbia", filtroGenero)}>Cumbia {filtroGenero.includes("Cumbia") ? "✔️" : ""}</button>
+                    <button on:click={() => filtroGenero = []}>Limpiar filtro</button>
+                  </div>
+                {/if}
+              </div>
             </div>
+
+
+
           <svg width="2500" height="300">
       
             <!-- Dibujar las 5 líneas del pentagrama -->
@@ -189,7 +231,7 @@
                 stroke-width="2" />
             {/each}
             <!-- las notas -->
-            {#each viernes as d, i}
+            {#each filtrarGlobal(viernes) as d, i}
             {#if d.actividad == "semicorchea"} 
               <svg
                 width="130"
@@ -291,7 +333,27 @@
             <h2 >
               <b>Sabado</b>
             </h2>
+            <button class="boton-filtro-dia" on:click={() => menuFiltroAbierto = !menuFiltroAbierto}>
+              <i class="fa-solid fa-filter"></i>
+            </button>
             </div>
+            {#if menuFiltroAbierto}
+  <div class="menu-filtros-dia">
+    <button on:click={() => toggleFiltro("Reggeaton", filtroGenero)}>
+      Reggeaton {filtroGenero.includes("Reggeaton") ? "✔️" : ""}
+    </button>
+    <button on:click={() => toggleFiltro("Rock", filtroGenero)}>
+      Rock {filtroGenero.includes("Rock") ? "✔️" : ""}
+    </button>
+    <button on:click={() => toggleFiltro("Cumbia", filtroGenero)}>
+      Cumbia {filtroGenero.includes("Cumbia") ? "✔️" : ""}
+    </button>
+    <button on:click={() => filtroGenero = []}>
+      Limpiar filtro
+    </button>
+  </div>
+{/if}
+
           <svg width="2500" height="300">
             <!-- líneas y notas del segundo pentagrama -->
             {#each Array(5) as _, i}
@@ -304,7 +366,7 @@
                 stroke-width="2" />
             {/each}
             <!-- Dibujar las notas como imágenes -->
-            {#each sabado as d, i}
+            {#each filtrarGlobal(viernes) as d, i}
                {#if d.actividad == "semicorchea"} 
               <svg
                 width="130"
@@ -403,7 +465,27 @@
             <h2 >
               <b>Domingo
             </h2>
+            <button class="boton-filtro-dia" on:click={() => menuFiltroAbierto = !menuFiltroAbierto}>
+              <i class="fa-solid fa-filter"></i>
+            </button>
         </div>
+        {#if menuFiltroAbierto}
+  <div class="menu-filtros-dia">
+    <button on:click={() => toggleFiltro("Reggeaton", filtroGenero)}>
+      Reggeaton {filtroGenero.includes("Reggeaton") ? "✔️" : ""}
+    </button>
+    <button on:click={() => toggleFiltro("Rock", filtroGenero)}>
+      Rock {filtroGenero.includes("Rock") ? "✔️" : ""}
+    </button>
+    <button on:click={() => toggleFiltro("Cumbia", filtroGenero)}>
+      Cumbia {filtroGenero.includes("Cumbia") ? "✔️" : ""}
+    </button>
+    <button on:click={() => filtroGenero = []}>
+      Limpiar filtro
+    </button>
+  </div>
+{/if}
+
         <svg width="2500" height="300">
           <!-- líneas y notas del segundo pentagrama -->
           {#each Array(5) as _, i}
@@ -416,7 +498,7 @@
                 stroke-width="2" />
             {/each}
           <!-- Dibujar las notas como imágenes -->
-          {#each domingo as d, i}
+          {#each filtrarGlobal(viernes) as d, i}
              {#if d.actividad == "semicorchea"} 
               <svg
                 width="130"
@@ -528,6 +610,7 @@
       <a href="#sectionPin3" class="nav-link" on:click={() => menuAbierto = false}>Domingo</a>
   </div>
 {/if}
+
 
 
 
@@ -656,13 +739,14 @@ svg {
   margin: 0 auto;
 }
 .pentagrama{
-  position: absolute;
+  position: relative;
   top: 20px;
   left: 20px;
   font-weight: bold;
   font-size: 1.6rem;
   color: #d43f3a;
-  align-items: center
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo-container {
