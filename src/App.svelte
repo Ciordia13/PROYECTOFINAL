@@ -5,6 +5,11 @@
   function energiaToY(energia) {
     return 260 - (energia - 1) * 50;
   }
+  function calcularAnchoSVG(datos) {
+    return datos.length * 100 + 200; // 100px por nota + 200px de margen
+  }
+  
+  
 
   let viernes = [
     {"persona": 1, "minutos": 2, "genero": "Electronica", "actividad": "semicorchea", "energia": 5},
@@ -111,15 +116,19 @@
 
   function toggleFiltroNotas(valor) {
     filtroNotas = filtroNotas === valor ? null : valor;
+
   }
   function toggleFiltroEnergia(valor) {
     filtroEnergia = filtroEnergia === valor ? null : valor;
+
   }
   function toggleFiltroTiempo(valor) {
     filtroTiempo = filtroTiempo === valor ? null : valor;
+   
   }
   function toggleFiltroGenero(valor) {
     filtroGenero = filtroGenero === valor ? null : valor;
+    
   }
 
 function filtrarGlobal(datos, notas, energia, tiempo, genero) {
@@ -153,6 +162,7 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
       window.removeEventListener("keydown", cerrarConEscape);
     });
   });
+
 </script>
 
 <main>
@@ -192,7 +202,7 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
   <!-- Scroll horizontal Viernes  -->
   <section id="sectionPin1">
     <div class="pin-wrap-sticky">
-      <div class="pin-wrap">
+      <div class="pin-wrap"  style = "width: {calcularAnchoSVG(viernesFiltrado)}px;">
         <div class="titulo-con-filtro">
           <h2>Viernes</h2>
           <div class="contenedor-filtro">
@@ -250,7 +260,7 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
             {/if}
           </div>
         </div>
-        <svg width="2500" height="300">
+        <svg width={calcularAnchoSVG(viernesFiltrado)} height="300">
           {#each Array(5) as _, i}
             <line 
               x1="0" 
@@ -300,7 +310,7 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
   <!-- Scroll horizontal Sabado  -->
 <section id="sectionPin2">
   <div class="pin-wrap-sticky">
-    <div class="pin-wrap">
+    <div class="pin-wrap" style="width: {calcularAnchoSVG(sabadoFiltrado)};">
       <div class="titulo-con-filtro">
         <h2><b>Sabado</b></h2>
         <div class="contenedor-filtro">
@@ -358,7 +368,7 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
             {/if}
           </div>
         </div>
-        <svg width="2500" height="300">
+        <svg width={calcularAnchoSVG(sabadoFiltrado)} height="300">
           {#each Array(5) as _, i}
             <line 
               x1="0" 
@@ -408,7 +418,7 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
   <!-- Scroll horizontal Domingo -->
 <section id="sectionPin2">
   <div class="pin-wrap-sticky">
-    <div class="pin-wrap">
+    <div class="pin-wrap"  style="width: {calcularAnchoSVG(domingoFiltrado)};">
       <div class="titulo-con-filtro">
         <h2><b>Domingo</b></h2>
         <div class="contenedor-filtro">
@@ -466,7 +476,7 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
             {/if}
           </div>
         </div>
-        <svg width="2500" height="300">
+        <svg width={calcularAnchoSVG(domingoFiltrado)} height="300">
           {#each Array(5) as _, i}
             <line 
               x1="0" 
@@ -623,18 +633,18 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
   view-timeline-name: --section-pin-3;
 }
 
+
 .pin-wrap-sticky {
   position: sticky;
   top: 0;
   height: 100vh;
-  width: 100vw;
+  width: 100hv;
   background-color: #cccccc;
   margin-bottom: 0px; 
 }
 
 .pin-wrap {
   height: 100vh;
-  width: 2900px; /* igual al ancho del SVG */
   will-change: transform;
   display: flex;
   flex-direction: column; /* Cambia a columna */
@@ -642,16 +652,22 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
   justify-content: center;
   
   animation: linear move forwards;
-  animation-timeline: --section-pin-tl;
+  /* animation-timeline: --section-pin-tl; */
   animation-range: contain 0% contain 100%;
+  will-change: transform;
 }
 #sectionPin1 .pin-wrap {
+  animation: linear move forwards;
   animation-timeline: --section-pin-1;
 }
+
 #sectionPin2 .pin-wrap {
+  animation: linear move forwards;
   animation-timeline: --section-pin-2;
 }
+
 #sectionPin3 .pin-wrap {
+  animation: linear move forwards;
   animation-timeline: --section-pin-3;
 }
 svg {

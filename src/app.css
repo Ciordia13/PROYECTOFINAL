@@ -496,13 +496,16 @@ body {
 }
 
 .titulo-con-filtro {
+  position: fixed;
+  top: 5rem;
+  left: 2rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 12px;
   padding-left: 40px;
   margin-bottom: 100px;
-  margin-top: -28px;
+  margin-top: -20px;
 }
 
 .titulo-con-filtro h2 {
