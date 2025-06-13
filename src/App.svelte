@@ -6,9 +6,12 @@
     return 260 - (energia - 1) * 50;
   }
   function calcularAnchoSVG(datos) {
-    return datos.length * 100 + 200; // 100px por nota + 200px de margen
-  }
-  
+  const ancho = datos.length * 120 + 200;
+  return Math.max(ancho, window.innerWidth); // nunca menor al viewport
+}
+  function calcularAlturaSeccion(ancho) {
+  return ancho > window.innerWidth ? '500vh' : '150vh';
+}
   
 
   let viernes = [
@@ -200,7 +203,7 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
   </div>
 
   <!-- Scroll horizontal Viernes  -->
-  <section id="sectionPin1">
+  <section id="sectionPin1"  style="height: {calcularAlturaSeccion(calcularAnchoSVG(viernesFiltrado))};">
     <div class="pin-wrap-sticky">
       <div class="pin-wrap"  style = "width: {calcularAnchoSVG(viernesFiltrado)}px;">
         <div class="titulo-con-filtro">
@@ -265,7 +268,7 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
             <line 
               x1="0" 
               y1={260 - i * 50} 
-              x2="2900" 
+              x2={calcularAnchoSVG(viernesFiltrado)} 
               y2={260 - i * 50} 
               stroke="rgba(0, 0, 0, 0.4)"
               stroke-width="2" />
@@ -308,9 +311,9 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
   </section>
 
   <!-- Scroll horizontal Sabado  -->
-<section id="sectionPin2">
+<section id="sectionPin2" style="height: {calcularAlturaSeccion(calcularAnchoSVG(sabadoFiltrado))};">
   <div class="pin-wrap-sticky">
-    <div class="pin-wrap" style="width: {calcularAnchoSVG(sabadoFiltrado)};">
+    <div class="pin-wrap" style="width: {calcularAnchoSVG(sabadoFiltrado)}px;">
       <div class="titulo-con-filtro">
         <h2><b>Sabado</b></h2>
         <div class="contenedor-filtro">
@@ -373,7 +376,7 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
             <line 
               x1="0" 
               y1={260 - i * 50} 
-              x2="2900" 
+              x2={calcularAnchoSVG(sabadoFiltrado)}
               y2={260 - i * 50} 
               stroke="rgba(0, 0, 0, 0.4)"
               stroke-width="2" />
@@ -416,9 +419,9 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
   </section>
 
   <!-- Scroll horizontal Domingo -->
-<section id="sectionPin2">
+<section id="sectionPin3" style="height: {calcularAlturaSeccion(calcularAnchoSVG(domingoFiltrado))};">
   <div class="pin-wrap-sticky">
-    <div class="pin-wrap"  style="width: {calcularAnchoSVG(domingoFiltrado)};">
+    <div class="pin-wrap"  style="width: {calcularAnchoSVG(domingoFiltrado)}px;">
       <div class="titulo-con-filtro">
         <h2><b>Domingo</b></h2>
         <div class="contenedor-filtro">
@@ -481,7 +484,7 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
             <line 
               x1="0" 
               y1={260 - i * 50} 
-              x2="2900" 
+              x2={calcularAnchoSVG(domingoFiltrado)}
               y2={260 - i * 50} 
               stroke="rgba(0, 0, 0, 0.4)"
               stroke-width="2" />
@@ -617,7 +620,7 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
 }
 
 #sectionPin1, #sectionPin2, #sectionPin3 {
-  height: 500vh;
+  
   overflow: visible;
 
   view-timeline-axis: block;
@@ -638,7 +641,7 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
   position: sticky;
   top: 0;
   height: 100vh;
-  width: 100hv;
+  /* width is set dynamically via style attribute in markup */
   background-color: #cccccc;
   margin-bottom: 0px; 
 }
@@ -659,16 +662,19 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
 #sectionPin1 .pin-wrap {
   animation: linear move forwards;
   animation-timeline: --section-pin-1;
+  animation-range: contain 7% contain 100%;
 }
 
 #sectionPin2 .pin-wrap {
   animation: linear move forwards;
   animation-timeline: --section-pin-2;
+  animation-range: contain 7% contain 100%;
 }
 
 #sectionPin3 .pin-wrap {
   animation: linear move forwards;
   animation-timeline: --section-pin-3;
+  animation-range: contain 7% contain 100%;
 }
 svg {
   display: block;
