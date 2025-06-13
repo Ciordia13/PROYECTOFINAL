@@ -520,6 +520,16 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
       </div>
     </div>
   </section>
+  <section class="graficos-flourish">
+    <div class="flourish-embed flourish-survey" data-src="visualisation/23710997">
+   <script src="https://public.flourish.studio/resources/embed.js"></script>
+    <noscript><img src="https://public.flourish.studio/visualisation/23710997/thumbnail" width="100%" alt="survey visualization" /></noscript>
+  </div>
+    <div class="flourish-embed flourish-pictogram" data-src="visualisation/23715747">
+    <script src="https://public.flourish.studio/resources/embed.js"></script>
+    <noscript><img src="https://public.flourish.studio/visualisation/23715747/thumbnail" width="100%" alt="pictogram visualization" /></noscript>
+  </div>
+  </section>
 
   <!-- BOTÓN flotante de ayuda -->
   <div class="boton-ayuda" on:click={() => mostrarReferencias = !mostrarReferencias} title="Ver ayuda">
@@ -545,6 +555,9 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
       <a href="#sectionPin3" class="nav-link" on:click={() => menuAbierto = false}>Domingo</a>
     </div>
   {/if}
+
+    
+
 </main>
 
 
