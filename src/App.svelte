@@ -96,7 +96,13 @@
   // Escala de color por género (puede ser categórica)
   const colorScale = d3.scaleOrdinal()
     .domain(["Rock", "Reggeaton", "Cumbia", "Electronica", "Pop", "Otro"])
-    .range(["red", "blue", "green", "purple", "orange", "cyan"]); 
+    .range(["hsl(0, 100%, 50%)",    // Rock → rojo
+    "hsl(240, 100%, 50%)",  // Reggeaton → azul
+    "hsl(140, 100%, 50%)",  // Cumbia → verde hoja
+    "hsl(290, 80%, 50%)",   // Electronica → violeta orquídea
+    "hsl(330, 100%, 55%)",   // Pop → rosa estable
+    "hsl(195, 100%, 55%)"    // Otro → celeste
+  ]);
 
   // Escala de brillo (cuantitativa)
   const brilloScale = d3.scaleLinear()
