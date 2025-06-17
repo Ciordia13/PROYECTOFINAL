@@ -528,13 +528,13 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
   </section>
   <section class="graficos-flourish">
     <div class="flourish-embed flourish-survey" data-src="visualisation/23710997">
-   <script src="https://public.flourish.studio/resources/embed.js"></script>
+    <script src="https://public.flourish.studio/resources/embed.js"></script>
     <noscript><img src="https://public.flourish.studio/visualisation/23710997/thumbnail" width="100%" alt="survey visualization" /></noscript>
-  </div>
+    </div>
     <div class="flourish-embed flourish-pictogram" data-src="visualisation/23715747">
     <script src="https://public.flourish.studio/resources/embed.js"></script>
     <noscript><img src="https://public.flourish.studio/visualisation/23715747/thumbnail" width="100%" alt="pictogram visualization" /></noscript>
-  </div>
+    </div>
   </section>
 
   <!-- BOTÓN flotante de ayuda -->
