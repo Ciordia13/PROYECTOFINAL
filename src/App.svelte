@@ -155,9 +155,9 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
   let submenuFiltro = ""; // "", "notas", "energia", "tiempo", "genero"
   let menuFiltroAbierto = false;
 
-$: viernesFiltrado = filtrarGlobal(viernes, filtroNotas, filtroEnergia, filtroTiempo, filtroGenero);
-$: sabadoFiltrado = filtrarGlobal(sabado, filtroNotas, filtroEnergia, filtroTiempo, filtroGenero);
-$: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTiempo, filtroGenero);
+  $: viernesFiltrado = filtrarGlobal(viernes, filtroNotas, filtroEnergia, filtroTiempo, filtroGenero);
+  $: sabadoFiltrado = filtrarGlobal(sabado, filtroNotas, filtroEnergia, filtroTiempo, filtroGenero);
+  $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTiempo, filtroGenero);
 
   let header;
   onMount(() => {
@@ -526,11 +526,27 @@ $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTi
       </div>
     </div>
   </section>
-  <section class="graficos-flourish">
+    <section class="bloque-titulo">
+      <h2 class="titulo-seccion">
+        Explora y filtra como quieras lo que escuchó la gente el fin de semana
+      </h2>
+      <p class="subtitulo-seccion">
+        Cada círculo representa a una persona. Agrupadas por día, actividad, tiempo, energía y género musical, exploralo como quieras.
+      </p>
+    </section>
+    <section class="graficos-flourish">
     <div class="flourish-embed flourish-survey" data-src="visualisation/23710997">
     <script src="https://public.flourish.studio/resources/embed.js"></script>
     <noscript><img src="https://public.flourish.studio/visualisation/23710997/thumbnail" width="100%" alt="survey visualization" /></noscript>
     </div>
+    </section>
+    <section class="bloque-titulo">
+      <h2 class="titulo-seccion">Cómo varió la energía a lo largo del fin de semana</h2>
+      <p class="subtitulo-seccion">
+        El sábado se destacó con un salto de energía. El viernes fue más intermedio, con variaciones suaves, y el domingo terminó con un mood mucho más tranquilo.
+      </p>
+    </section>
+    <section class="graficos-flourish">
     <div class="flourish-embed flourish-pictogram" data-src="visualisation/23715747">
     <script src="https://public.flourish.studio/resources/embed.js"></script>
     <noscript><img src="https://public.flourish.studio/visualisation/23715747/thumbnail" width="100%" alt="pictogram visualization" /></noscript>
