@@ -140,6 +140,14 @@
     
   }
 
+function limpiarFiltros() {
+  filtroNotas = null;
+  filtroEnergia = null;
+  filtroTiempo = null;
+  filtroGenero = null;
+}
+
+
 function filtrarGlobal(datos, notas, energia, tiempo, genero) {
   return datos.filter(d => {
     const notasOk = notas === null || d.actividad === notas;
@@ -224,6 +232,7 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
                 <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "energia" ? "" : "energia"}>Energía</button>
                 <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "tiempo" ? "" : "tiempo"}>Tiempo</button>
                 <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "genero" ? "" : "genero"}>Género</button>
+                <button class="nav-link limpiar-filtros" on:click={limpiarFiltros}>Limpiar</button>
               </div>
               <!-- Submenú Notas -->
               {#if submenuFiltro === "notas"}
@@ -332,6 +341,7 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
                 <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "energia" ? "" : "energia"}>Energía</button>
                 <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "tiempo" ? "" : "tiempo"}>Tiempo</button>
                 <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "genero" ? "" : "genero"}>Género</button>
+                <button class="nav-link limpiar-filtros" on:click={limpiarFiltros}>Limpiar</button>
               </div>
               <!-- Submenú Notas -->
               {#if submenuFiltro === "notas"}
@@ -440,6 +450,7 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
                 <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "energia" ? "" : "energia"}>Energía</button>
                 <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "tiempo" ? "" : "tiempo"}>Tiempo</button>
                 <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "genero" ? "" : "genero"}>Género</button>
+                <button class="nav-link limpiar-filtros" on:click={limpiarFiltros}>Limpiar</button>
               </div>
               <!-- Submenú Notas -->
               {#if submenuFiltro === "notas"}
