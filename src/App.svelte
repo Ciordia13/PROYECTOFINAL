@@ -96,9 +96,9 @@
   // Escala de color por género (puede ser categórica)
   const colorScale = d3.scaleOrdinal()
     .domain(["Rock", "Reggeaton", "Cumbia", "Electronica", "Pop", "Otro"])
-    .range(["hsl(0, 100%, 50%)",    // Rock → rojo
+    .range(["hsl(24, 95%, 50%)",    // Rock → rojo
     "hsl(240, 100%, 50%)",  // Reggeaton → azul
-    "hsl(140, 100%, 50%)",  // Cumbia → verde hoja
+    "hsl(116, 100%, 50%)",  // Cumbia → verde hoja
     "hsl(290, 80%, 50%)",   // Electronica → violeta orquídea
     "hsl(330, 100%, 55%)",   // Pop → rosa estable
     "hsl(195, 100%, 55%)"    // Otro → celeste
@@ -106,8 +106,8 @@
 
   // Escala de brillo (cuantitativa)
   const brilloScale = d3.scaleLinear()
-    .domain([0.25, 4]) // minutos escuchados
-    .range([80, 30]); // claro → oscuro
+  .domain([0.25, 0.5, 1, 2, 4]) // minutos escuchados
+  .range([75, 65, 50, 40, 30]); // luminosidad en %
 
   // Combinar las dos escalas: género + minutos
   function colorFinal(genero, minutos) {
@@ -688,7 +688,7 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
   top: 0;
   height: 100vh;
   /* width is set dynamically via style attribute in markup */
-  background-color: #cccccc;
+  
   margin-bottom: 0px; 
 }
 
