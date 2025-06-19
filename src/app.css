@@ -70,26 +70,6 @@ body {
 
 
 
-.boton-ayuda {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 56px;
-  height: 56px;
-  background-color: #d43f3a;
-  color: white;
-  font-size: 1.8rem;
-  font-weight: bold;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1001;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  user-select: none;
-}
-
 .overlay {
   position: fixed;
   top: 0;
@@ -267,30 +247,7 @@ body {
   }
 }
 
-.boton-menu {
-  position: fixed;
-  bottom: 30px;
-  right: 100px; /* a la izquierda del '?' */
-  width: 56px;
-  height: 56px;
-  background-color: #d43f3a;
-  color: white;
-  font-size: 1.8rem;
-  font-weight: bold;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1001;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  user-select: none;
-  transition: transform 0.3s ease;
-}
 
-.boton-menu:hover {
-  transform: scale(1.05);
-}
 
 .botones-dia-flotantes {
   position: fixed;
@@ -344,8 +301,8 @@ body {
 
 .contenedor-menu-dias {
   position: fixed;
-  bottom: 27px;
-  right: 170px;
+  bottom: 85px;
+  right: 20px;
   background-color: white;
   border-radius: 50px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -463,8 +420,8 @@ body {
 /* Opciones del menú de filtro */
 .menu-filtros-dia {
   position: fixed;
-  bottom: 30px; /* misma altura del botón de filtro */
-  right: 240px; /* a la izquierda del botón del embudo */
+  bottom: 10px; /* misma altura del botón de filtro */
+  right: 230px; /* a la izquierda del botón del embudo */
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.13);
@@ -516,8 +473,8 @@ body {
 
 .submenu-filtros-dia {
   position: fixed;
-  bottom: 110px; /* ajustá esto si querés que suba más */
-  right: 240px; /* mismo alineado que el menú principal */
+  bottom: 90px; /* ajustá esto si querés que suba más */
+  right: 230px; /* mismo alineado que el menú principal */
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.13);
@@ -593,24 +550,42 @@ body {
   font-family: 'Karla', sans-serif;
 }
 
-.boton-filtro-global {
+
+.boton-menu,
+.boton-filtro-global,
+.boton-ayuda {
   position: fixed;
-  bottom: 30px;
-  right: 170px; /* un poco más a la izquierda del botón ☰ */
-  width: 56px;
-  height: 56px;
+  bottom: 1rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   background-color: #d43f3a;
   color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
-  border-radius: 50%;
+  font-size: 2rem;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  z-index: 1001;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  user-select: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
+.boton-filtro-global {
+  right: 10rem;
+}
 
+.boton-menu {
+  right: 5.5rem;
+}
+
+.boton-ayuda {
+  right: 1rem;
+}
+
+/* ANIMACIÓN HOVER PARA TODOS */
+.boton-menu:hover,
+.boton-filtro-global:hover,
+.boton-ayuda:hover {
+  transform: scale(1.1);
+  background-color: #d43f3a; /* mantiene el rojo */
+}
