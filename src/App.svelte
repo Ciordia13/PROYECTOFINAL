@@ -180,6 +180,7 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
     });
   });
 
+
 </script>
 
 <main>
@@ -221,62 +222,7 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
     <div class="pin-wrap-sticky">
       <div class="pin-wrap"  style = "width: {calcularAnchoSVG(viernesFiltrado)}px;">
         <div class="titulo-con-filtro">
-          <h2>Viernes</h2>
-          <div class="contenedor-filtro">
-            <button class="boton-filtro-dia" on:click={() => menuFiltroAbierto = !menuFiltroAbierto}>
-              <i class="fa-solid fa-filter"></i>
-            </button>
-            {#if menuFiltroAbierto}
-              <div class="menu-filtros-dia">
-                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "notas" ? "" : "notas"}>Notas</button>
-                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "energia" ? "" : "energia"}>Energía</button>
-                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "tiempo" ? "" : "tiempo"}>Tiempo</button>
-                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "genero" ? "" : "genero"}>Género</button>
-                <button class="nav-link limpiar-filtros" on:click={limpiarFiltros}>Limpiar</button>
-              </div>
-              <!-- Submenú Notas -->
-              {#if submenuFiltro === "notas"}
-                <div class="submenu-filtros-dia">
-                  <button class="nav-link {filtroNotas === 'semicorchea' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('semicorchea')}>Entrenando</button>
-                  <button class="nav-link {filtroNotas === 'corchea' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('corchea')}>Fiesta</button>
-                  <button class="nav-link {filtroNotas === 'negra' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('negra')}>Estudiando</button>
-                  <button class="nav-link {filtroNotas === 'blanca' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('blanca')}>Viajando</button>
-                  <button class="nav-link {filtroNotas === 'redonda' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('redonda')}>Otra cosa</button>
-                </div>
-              {/if}
-              <!-- Submenú Energía -->
-              {#if submenuFiltro === "energia"}
-                <div class="submenu-filtros-dia">
-                  <button class="nav-link {filtroEnergia === 1 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(1)}>Nada</button>
-                  <button class="nav-link {filtroEnergia === 2 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(2)}>Poco</button>
-                  <button class="nav-link {filtroEnergia === 3 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(3)}>Regular</button>
-                  <button class="nav-link {filtroEnergia === 4 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(4)}>Bastante</button>
-                  <button class="nav-link {filtroEnergia === 5 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(5)}>Mucho</button>
-                </div>
-              {/if}
-              <!-- Submenú Tiempo -->
-              {#if submenuFiltro === "tiempo"}
-                <div class="submenu-filtros-dia">
-                  <button class="nav-link {filtroTiempo === 0.25 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(0.25)}>15m</button>
-                  <button class="nav-link {filtroTiempo === 0.5 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(0.5)}>30m</button>
-                  <button class="nav-link {filtroTiempo === 1 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(1)}>1h</button>
-                  <button class="nav-link {filtroTiempo === 2 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(2)}>2h</button>
-                  <button class="nav-link {filtroTiempo === 4 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(4)}>4h</button>
-                </div>
-              {/if}
-              <!-- Submenú Género -->
-              {#if submenuFiltro === "genero"}
-                <div class="submenu-filtros-dia">
-                  <button class="nav-link {filtroGenero === 'Rock' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Rock')}>Rock</button>
-                  <button class="nav-link {filtroGenero === 'Reggeaton' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Reggeaton')}>Reggeaton</button>
-                  <button class="nav-link {filtroGenero === 'Cumbia' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Cumbia')}>Cumbia</button>
-                  <button class="nav-link {filtroGenero === 'Electronica' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Electronica')}>Electronica</button>
-                  <button class="nav-link {filtroGenero === 'Pop' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Pop')}>Pop</button>
-                  <button class="nav-link {filtroGenero === 'Otro' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Otro')}>Otro</button>
-                </div>
-              {/if}
-            {/if}
-          </div>
+          <h2><b>Viernes</b></h2>
         </div>
         <svg width={calcularAnchoSVG(viernesFiltrado)} height="300">
           {#each Array(5) as _, i}
@@ -331,62 +277,7 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
     <div class="pin-wrap" style="width: {calcularAnchoSVG(sabadoFiltrado)}px;">
       <div class="titulo-con-filtro">
         <h2><b>Sabado</b></h2>
-        <div class="contenedor-filtro">
-          <button class="boton-filtro-dia" on:click={() => menuFiltroAbierto = !menuFiltroAbierto}>
-            <i class="fa-solid fa-filter"></i>
-          </button>
-            {#if menuFiltroAbierto}
-              <div class="menu-filtros-dia">
-                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "notas" ? "" : "notas"}>Notas</button>
-                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "energia" ? "" : "energia"}>Energía</button>
-                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "tiempo" ? "" : "tiempo"}>Tiempo</button>
-                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "genero" ? "" : "genero"}>Género</button>
-                <button class="nav-link limpiar-filtros" on:click={limpiarFiltros}>Limpiar</button>
-              </div>
-              <!-- Submenú Notas -->
-              {#if submenuFiltro === "notas"}
-                <div class="submenu-filtros-dia">
-                  <button class="nav-link {filtroNotas === 'semicorchea' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('semicorchea')}>Entrenando</button>
-                  <button class="nav-link {filtroNotas === 'corchea' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('corchea')}>Fiesta</button>
-                  <button class="nav-link {filtroNotas === 'negra' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('negra')}>Estudiando</button>
-                  <button class="nav-link {filtroNotas === 'blanca' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('blanca')}>Viajando</button>
-                  <button class="nav-link {filtroNotas === 'redonda' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('redonda')}>Otra cosa</button>
-                </div>
-              {/if}
-              <!-- Submenú Energía -->
-              {#if submenuFiltro === "energia"}
-                <div class="submenu-filtros-dia">
-                  <button class="nav-link {filtroEnergia === 1 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(1)}>Nada</button>
-                  <button class="nav-link {filtroEnergia === 2 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(2)}>Poco</button>
-                  <button class="nav-link {filtroEnergia === 3 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(3)}>Regular</button>
-                  <button class="nav-link {filtroEnergia === 4 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(4)}>Bastante</button>
-                  <button class="nav-link {filtroEnergia === 5 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(5)}>Mucho</button>
-                </div>
-              {/if}
-              <!-- Submenú Tiempo -->
-              {#if submenuFiltro === "tiempo"}
-                <div class="submenu-filtros-dia">
-                  <button class="nav-link {filtroTiempo === 0.25 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(0.25)}>15m</button>
-                  <button class="nav-link {filtroTiempo === 0.5 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(0.5)}>30m</button>
-                  <button class="nav-link {filtroTiempo === 1 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(1)}>1h</button>
-                  <button class="nav-link {filtroTiempo === 2 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(2)}>2h</button>
-                  <button class="nav-link {filtroTiempo === 4 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(4)}>4h</button>
-                </div>
-              {/if}
-              <!-- Submenú Género -->
-              {#if submenuFiltro === "genero"}
-                <div class="submenu-filtros-dia">
-                  <button class="nav-link {filtroGenero === 'Rock' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Rock')}>Rock</button>
-                  <button class="nav-link {filtroGenero === 'Reggeaton' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Reggeaton')}>Reggeaton</button>
-                  <button class="nav-link {filtroGenero === 'Cumbia' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Cumbia')}>Cumbia</button>
-                  <button class="nav-link {filtroGenero === 'Electronica' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Electronica')}>Electronica</button>
-                  <button class="nav-link {filtroGenero === 'Pop' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Pop')}>Pop</button>
-                  <button class="nav-link {filtroGenero === 'Otro' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Otro')}>Otro</button>
-                </div>
-              {/if}
-            {/if}
-          </div>
-        </div>
+      </div>
         <svg width={calcularAnchoSVG(sabadoFiltrado)} height="300">
           {#each Array(5) as _, i}
             <line 
@@ -440,62 +331,7 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
     <div class="pin-wrap"  style="width: {calcularAnchoSVG(domingoFiltrado)}px;">
       <div class="titulo-con-filtro">
         <h2><b>Domingo</b></h2>
-        <div class="contenedor-filtro">
-          <button class="boton-filtro-dia" on:click={() => menuFiltroAbierto = !menuFiltroAbierto}>
-            <i class="fa-solid fa-filter"></i>
-          </button>
-              {#if menuFiltroAbierto}
-              <div class="menu-filtros-dia">
-                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "notas" ? "" : "notas"}>Notas</button>
-                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "energia" ? "" : "energia"}>Energía</button>
-                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "tiempo" ? "" : "tiempo"}>Tiempo</button>
-                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "genero" ? "" : "genero"}>Género</button>
-                <button class="nav-link limpiar-filtros" on:click={limpiarFiltros}>Limpiar</button>
-              </div>
-              <!-- Submenú Notas -->
-              {#if submenuFiltro === "notas"}
-                <div class="submenu-filtros-dia">
-                  <button class="nav-link {filtroNotas === 'semicorchea' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('semicorchea')}>Entrenando</button>
-                  <button class="nav-link {filtroNotas === 'corchea' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('corchea')}>Fiesta</button>
-                  <button class="nav-link {filtroNotas === 'negra' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('negra')}>Estudiando</button>
-                  <button class="nav-link {filtroNotas === 'blanca' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('blanca')}>Viajando</button>
-                  <button class="nav-link {filtroNotas === 'redonda' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('redonda')}>Otra cosa</button>
-                </div>
-              {/if}
-              <!-- Submenú Energía -->
-              {#if submenuFiltro === "energia"}
-                <div class="submenu-filtros-dia">
-                  <button class="nav-link {filtroEnergia === 1 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(1)}>Nada</button>
-                  <button class="nav-link {filtroEnergia === 2 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(2)}>Poco</button>
-                  <button class="nav-link {filtroEnergia === 3 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(3)}>Regular</button>
-                  <button class="nav-link {filtroEnergia === 4 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(4)}>Bastante</button>
-                  <button class="nav-link {filtroEnergia === 5 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(5)}>Mucho</button>
-                </div>
-              {/if}
-              <!-- Submenú Tiempo -->
-              {#if submenuFiltro === "tiempo"}
-                <div class="submenu-filtros-dia">
-                  <button class="nav-link {filtroTiempo === 0.25 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(0.25)}>15m</button>
-                  <button class="nav-link {filtroTiempo === 0.5 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(0.5)}>30m</button>
-                  <button class="nav-link {filtroTiempo === 1 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(1)}>1h</button>
-                  <button class="nav-link {filtroTiempo === 2 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(2)}>2h</button>
-                  <button class="nav-link {filtroTiempo === 4 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(4)}>4h</button>
-                </div>
-              {/if}
-              <!-- Submenú Género -->
-              {#if submenuFiltro === "genero"}
-                <div class="submenu-filtros-dia">
-                  <button class="nav-link {filtroGenero === 'Rock' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Rock')}>Rock</button>
-                  <button class="nav-link {filtroGenero === 'Reggeaton' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Reggeaton')}>Reggeaton</button>
-                  <button class="nav-link {filtroGenero === 'Cumbia' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Cumbia')}>Cumbia</button>
-                  <button class="nav-link {filtroGenero === 'Electronica' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Electronica')}>Electronica</button>
-                  <button class="nav-link {filtroGenero === 'Pop' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Pop')}>Pop</button>
-                  <button class="nav-link {filtroGenero === 'Otro' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Otro')}>Otro</button>
-                </div>
-              {/if}
-            {/if}
-          </div>
-        </div>
+      </div>
         <svg width={calcularAnchoSVG(domingoFiltrado)} height="300">
           {#each Array(5) as _, i}
             <line 
@@ -580,6 +416,64 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
   <div class="boton-menu" on:click={() => menuAbierto = !menuAbierto} title="Navegar días">
     ☰
   </div>
+
+  <!-- BOTÓN FLOTANTE DE FILTRO GLOBAL -->
+<button class="boton-filtro-global" on:click={() => menuFiltroAbierto = !menuFiltroAbierto}>
+  <i class="fa-solid fa-filter"></i>
+</button>
+
+            {#if menuFiltroAbierto}
+              <div class="menu-filtros-dia">
+                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "notas" ? "" : "notas"}>Notas</button>
+                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "energia" ? "" : "energia"}>Energía</button>
+                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "tiempo" ? "" : "tiempo"}>Tiempo</button>
+                <button class="nav-link" on:click={() => submenuFiltro = submenuFiltro === "genero" ? "" : "genero"}>Género</button>
+                <button class="nav-link limpiar-filtros" on:click={limpiarFiltros}>Limpiar</button>
+              </div>
+
+              <!-- Submenú Notas -->
+              {#if submenuFiltro === "notas"}
+                <div class="submenu-filtros-dia">
+                  <button class="nav-link {filtroNotas === 'semicorchea' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('semicorchea')}>Entrenando</button>
+                  <button class="nav-link {filtroNotas === 'corchea' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('corchea')}>Fiesta</button>
+                  <button class="nav-link {filtroNotas === 'negra' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('negra')}>Estudiando</button>
+                  <button class="nav-link {filtroNotas === 'blanca' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('blanca')}>Viajando</button>
+                  <button class="nav-link {filtroNotas === 'redonda' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('redonda')}>Otra cosa</button>
+                </div>
+              {/if}
+              <!-- Submenú Energía -->
+              {#if submenuFiltro === "energia"}
+                <div class="submenu-filtros-dia">
+                  <button class="nav-link {filtroEnergia === 1 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(1)}>Nada</button>
+                  <button class="nav-link {filtroEnergia === 2 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(2)}>Poco</button>
+                  <button class="nav-link {filtroEnergia === 3 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(3)}>Regular</button>
+                  <button class="nav-link {filtroEnergia === 4 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(4)}>Bastante</button>
+                  <button class="nav-link {filtroEnergia === 5 ? 'activo' : ''}" on:click={() => toggleFiltroEnergia(5)}>Mucho</button>
+                </div>
+              {/if}
+              <!-- Submenú Tiempo -->
+              {#if submenuFiltro === "tiempo"}
+                <div class="submenu-filtros-dia">
+                  <button class="nav-link {filtroTiempo === 0.25 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(0.25)}>15m</button>
+                  <button class="nav-link {filtroTiempo === 0.5 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(0.5)}>30m</button>
+                  <button class="nav-link {filtroTiempo === 1 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(1)}>1h</button>
+                  <button class="nav-link {filtroTiempo === 2 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(2)}>2h</button>
+                  <button class="nav-link {filtroTiempo === 4 ? 'activo' : ''}" on:click={() => toggleFiltroTiempo(4)}>4h</button>
+                </div>
+              {/if}
+              <!-- Submenú Género -->
+              {#if submenuFiltro === "genero"}
+                <div class="submenu-filtros-dia">
+                  <button class="nav-link {filtroGenero === 'Rock' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Rock')}>Rock</button>
+                  <button class="nav-link {filtroGenero === 'Reggeaton' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Reggeaton')}>Reggeaton</button>
+                  <button class="nav-link {filtroGenero === 'Cumbia' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Cumbia')}>Cumbia</button>
+                  <button class="nav-link {filtroGenero === 'Electronica' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Electronica')}>Electronica</button>
+                  <button class="nav-link {filtroGenero === 'Pop' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Pop')}>Pop</button>
+                  <button class="nav-link {filtroGenero === 'Otro' ? 'activo' : ''}" on:click={() => toggleFiltroGenero('Otro')}>Otro</button>
+                </div>
+              {/if}
+            {/if}
+
   <!-- Botones de días -->
   {#if menuAbierto}
     <div class="contenedor-menu-dias">
