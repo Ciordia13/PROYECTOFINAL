@@ -1,3 +1,7 @@
+<svelte:head>
+  <script src="https://public.flourish.studio/resources/embed.js"></script>
+</svelte:head>
+
 <script>
   import * as d3 from "d3"
   import { onMount, onDestroy } from "svelte";
@@ -168,20 +172,29 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
   $: domingoFiltrado = filtrarGlobal(domingo, filtroNotas, filtroEnergia, filtroTiempo, filtroGenero);
 
   let header;
+
+  const slides = [
+    "Texto slide 1. Fusce quis augue et tortor interdum bibendum. Nam dolor elit",
+    "Texto slide 2. Fusce quis augue et tortor interdum bibendum. Nam dolor elit",
+    "Texto slide 3. Fusce quis augue et tortor interdum bibendum. Nam dolor elit",
+    "Texto slide 4. Fusce quis augue et tortor interdum bibendum. Nam dolor elit",
+    "Texto slide 5. Fusce quis augue et tortor interdum bibendum. Nam dolor elit",
+    "Texto slide 6. Fusce quis augue et tortor interdum bibendum. Nam dolor elit",
+    "Texto slide 7. Fusce quis augue et tortor interdum bibendum. Nam dolor elit",
+  ]
+
+  function loadFlourishScrolly() {
+    const script = document.createElement('script')
+    script.src = "https://cdn.flourish.rocks/flourish-scrolly-v3.1.0.min.js"
+    script.type = "text/javascript"
+    script.onload = () => initFlourishScrolly()
+    document.body.appendChild(script)
+  }
   onMount(() => {
-    const cerrarConEscape = (e) => {
-      if (e.key === "Escape") {
-        mostrarReferencias = false;
-      }
-    };
-    window.addEventListener("keydown", cerrarConEscape);
-    onDestroy(() => {
-      window.removeEventListener("keydown", cerrarConEscape);
-    });
+    loadFlourishScrolly()
   });
-
-
 </script>
+
 
 <main>
   <!-- HEADER principal tipo web -->
@@ -381,12 +394,27 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
         Cada círculo representa a una persona. Agrupadas por día, actividad, tiempo, energía y género musical, exploralo como quieras.
       </p>
     </section>
-    <section class="graficos-flourish">
-    <div class="flourish-embed" data-src="story/3177881">
-      <script src="https://public.flourish.studio/resources/embed.js"></script>
-      <noscript><img src="https://public.flourish.studio/story/3177881/thumbnail" width="100%" alt="visualization" />
-      </noscript></div>
+
+    <section> 
+      <div id="my-wrapper">
+        <!-- Reemplazar el ID de jeemplo por el de la story propia -->
+        <div class="flourish-embed" data-src="story/3177881" data-url="https://public.flourish.studio/story/3177881/thumbnail" ></div>
+          
+        
+
+        <!-- Iteramos sobre las distintas slides del componente de Flourish -->
+        {#each slides as slide, index}
+          <p>
+            {@html slide}
+            <!-- svelte-ignore a11y-missing-content -->
+            <a href={"#story/3177881/slide-" + (index + 1)}></a>
+          </p>
+        {/each}
+      </div>
     </section>
+
+
+    
    
     
 
@@ -508,6 +536,11 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
 .subtitulo strong {
   font-weight: 600;
   color: #111;
+}
+
+.my-wrapper {
+  margin: auto;
+  max-width: 1280px;
 }
 
 .leyenda {

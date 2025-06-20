@@ -589,3 +589,9 @@ body {
   transform: scale(1.1);
   background-color: #d43f3a; /* mantiene el rojo */
 }
+
+.fl-scrolly-step {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  color: white !important;
+  max-width: 400px !important;
+}
