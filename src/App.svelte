@@ -382,23 +382,13 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
       </p>
     </section>
     <section class="graficos-flourish">
-    <div class="flourish-embed flourish-survey" data-src="visualisation/23710997">
-    <script src="https://public.flourish.studio/resources/embed.js"></script>
-    <noscript><img src="https://public.flourish.studio/visualisation/23710997/thumbnail" width="100%" alt="survey visualization" /></noscript>
-    </div>
+    <div class="flourish-embed" data-src="story/3177881">
+      <script src="https://public.flourish.studio/resources/embed.js"></script>
+      <noscript><img src="https://public.flourish.studio/story/3177881/thumbnail" width="100%" alt="visualization" />
+      </noscript></div>
     </section>
-    <section class="bloque-titulo">
-      <h2 class="titulo-seccion">Cómo varió la energía a lo largo del fin de semana</h2>
-      <p class="subtitulo-seccion">
-        El sábado se destacó con un salto de energía. El viernes fue más intermedio, con variaciones suaves, y el domingo terminó con un mood mucho más tranquilo.
-      </p>
-    </section>
-    <section class="graficos-flourish">
-    <div class="flourish-embed flourish-pictogram" data-src="visualisation/23715747">
-    <script src="https://public.flourish.studio/resources/embed.js"></script>
-    <noscript><img src="https://public.flourish.studio/visualisation/23715747/thumbnail" width="100%" alt="pictogram visualization" /></noscript>
-    </div>
-  </section>
+   
+    
 
   <!-- BOTÓN flotante de ayuda -->
   <div class="boton-ayuda" on:click={() => mostrarReferencias = !mostrarReferencias} title="Ver ayuda">
