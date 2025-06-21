@@ -413,6 +413,16 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
       </div>
     </section>
 
+    <section class="bloque-titulo conclusion">
+      <h2 class="titulo-seccion">Conclusión: Ritmos que marcan el fin de semana</h2>
+      <p>
+        Los datos muestran que la música que escuchamos cambia según el día: <strong>viernes y sábados</strong> dominan los géneros enérgicos como el reggaetón y la electrónica, ligados a lo social y festivo, mientras que los <strong>domingos</strong> prevalecen estilos más tranquilos como el rock nacional, vinculados al descanso y la relajación.. Esto refleja cómo la música acompaña nuestros estados de ánimo y rutinas, y cómo el día influye directamente en nuestras elecciones musicales.
+      </p>
+      
+    </section>
+    
+    
+
 
     
    

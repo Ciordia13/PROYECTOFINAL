@@ -595,3 +595,15 @@ body {
   color: white !important;
   max-width: 400px !important;
 }
+
+.conclusion p {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
