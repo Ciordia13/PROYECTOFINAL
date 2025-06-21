@@ -174,13 +174,13 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
   let header;
 
   const slides = [
-    "Texto slide 1. Fusce quis augue et tortor interdum bibendum. Nam dolor elit",
-    "Texto slide 2. Fusce quis augue et tortor interdum bibendum. Nam dolor elit",
-    "Texto slide 3. Fusce quis augue et tortor interdum bibendum. Nam dolor elit",
-    "Texto slide 4. Fusce quis augue et tortor interdum bibendum. Nam dolor elit",
-    "Texto slide 5. Fusce quis augue et tortor interdum bibendum. Nam dolor elit",
-    "Texto slide 6. Fusce quis augue et tortor interdum bibendum. Nam dolor elit",
-    "Texto slide 7. Fusce quis augue et tortor interdum bibendum. Nam dolor elit",
+    "Reultados sobre la encuesta a jóvenes sobre música y emociones",
+    "Distribución de géneros musicales",
+    "Distribución de géneros musicales por día del fin de semana",
+    "Comparacion de los dias con el genero musical",
+    "Distribucion de genero musical dado la actvidad que realizaba",
+    "Comparacion de los dias con la actividad que realizaba",
+    "Comparacion de los dias con el tiempo que escuchaba música",
   ]
 
   function loadFlourishScrolly() {
