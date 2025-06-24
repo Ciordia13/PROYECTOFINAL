@@ -174,13 +174,14 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
   let header;
 
   const slides = [
-    "Reultados sobre la encuesta a jóvenes sobre música y emociones",
-    "Distribución de géneros musicales",
-    "Distribución de géneros musicales por día del fin de semana",
-    "Comparacion de los dias con el genero musical",
-    "Distribucion de genero musical dado la actvidad que realizaba",
-    "Comparacion de los dias con la actividad que realizaba",
-    "Comparacion de los dias con el tiempo que escuchaba música",
+    "Cada circulito verde representa a una persona que escuchó música el finde. Están todos listos para contarnos que escucharon.",
+    "Acá se revelan los gustos: rock y reggaetón se roban la pista. Cumbia y pop suman su ritmo, mientras electrónica y otros generos aparecen tímidamente.",
+    "El viernes arranca bien mezclado y el sábado explota de colores. El domingo se relaja un poco, pero el rock sigue firme. Cada día trae su mood… y su música.",
+    "Ahora vemos cómo se reparte el sonido del finde entre viernes, sábado y domingo. Spoiler: el reggaetón  y el rock son el alma de la fiesta sin importar el día.",
+    "¿Estás estrenando? Probablemente escuchás rock o pop. ¿De fiesta? Aparece más el reggaetón y la cumbia. Cada actividad tiene su propio mix musical lleno de energía",
+    "El sábado es más de fiesta, el domingo trae relax, viajes y estudio. Viernes es ese punto medio donde arranca todo. Cada día tiene su vibra, y la música lo acompaña.",
+    "Los círculos cambian de tamaño y nos cuentan cuánto tiempo se sumergieron en la música. El sábado parece ser el día de auriculares todo el día.",
+    "La música no solo se escucha, ¡se siente!. Algunas personas terminaron vibrando alto, otras se relajaron, bajaron un cambio… Vemos como escuchar musica puede cambiar el ánimo.",  
   ]
 
   function loadFlourishScrolly() {
@@ -190,9 +191,27 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
     script.onload = () => initFlourishScrolly()
     document.body.appendChild(script)
   }
-  onMount(() => {
-    loadFlourishScrolly()
+  function limitarAnchoFlourish() {
+  const observer = new MutationObserver(() => {
+    const iframes = document.querySelectorAll(".flourish-embed iframe");
+    iframes.forEach((iframe) => {
+      iframe.style.maxWidth = "100vw";
+      iframe.style.overflowX = "hidden";
+      iframe.style.display = "block";
+    });
   });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+}
+
+onMount(() => {
+  loadFlourishScrolly();
+  limitarAnchoFlourish(); // Llama la función cuando montás la app
+});
+
 </script>
 
 
@@ -396,7 +415,7 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
     </section>
 
     <section> 
-      <div id="my-wrapper">
+      <div id="my-wrapper" style="width: auto;">
         <!-- Reemplazar el ID de jeemplo por el de la story propia -->
         <div class="flourish-embed" data-src="story/3177881" data-url="https://public.flourish.studio/story/3177881/thumbnail" ></div>
           
@@ -414,7 +433,6 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
     </section>
 
     <section class="bloque-titulo conclusion">
-      <h2 class="titulo-seccion">Conclusión: Ritmos que marcan el fin de semana</h2>
       <p>
         Los datos muestran que la música que escuchamos cambia según el día: <strong>viernes y sábados</strong> dominan los géneros enérgicos como el reggaetón y la electrónica, ligados a lo social y festivo, mientras que los <strong>domingos</strong> prevalecen estilos más tranquilos como el rock nacional, vinculados al descanso y la relajación.. Esto refleja cómo la música acompaña nuestros estados de ánimo y rutinas, y cómo el día influye directamente en nuestras elecciones musicales.
       </p>
@@ -548,9 +566,11 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
   color: #111;
 }
 
-.my-wrapper {
+#my-wrapper {
   margin: auto;
-  max-width: 1280px;
+  max-width: 100%;
+  overflow: hidden;
+
 }
 
 .leyenda {
@@ -690,6 +710,18 @@ svg {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+/* Evita que Flourish cause scroll horizontal */
+.flourish-embed {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  display: block;
+}
+.flourish-embed iframe {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  display: block !important;
+}
+
 
 </style>
 

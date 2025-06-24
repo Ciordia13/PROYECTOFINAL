@@ -4,7 +4,7 @@ main {
   margin: 0 auto;
 }
 body {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   background-color:rgb(236, 236, 236); /* fondo cálido suave */
   color: #1a1a1a;
   font-family: 'Karla', sans-serif;
