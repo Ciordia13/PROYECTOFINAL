@@ -5,6 +5,7 @@
 <script>
   import * as d3 from "d3"
   import { onMount, onDestroy } from "svelte";
+  import { fade, scale } from 'svelte/transition';
 
   function energiaToY(energia) {
     return 260 - (energia - 1) * 50;
@@ -212,6 +213,35 @@ onMount(() => {
   limitarAnchoFlourish(); // Llama la función cuando montás la app
 });
 
+let mostrarBotones = false;
+
+function chequearScroll() {
+  const bloquePentagramas = document.querySelector('.bloque-pentagramas');
+  if (!bloquePentagramas) return;
+
+  const rect = bloquePentagramas.getBoundingClientRect();
+
+  // Condición: si el bloque está visible en pantalla
+  if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+    mostrarBotones = true;
+  } else {
+    mostrarBotones = false;
+    menuAbierto = false;
+    menuFiltroAbierto = false;
+    submenuFiltro = "";
+    mostrarReferencias = false;
+  }
+}
+
+onMount(() => {
+  window.addEventListener('scroll', chequearScroll);
+  chequearScroll(); // Lo chequea al cargar la página
+
+  onDestroy(() => {
+    window.removeEventListener('scroll', chequearScroll);
+  });
+});
+
 </script>
 
 
@@ -222,11 +252,6 @@ onMount(() => {
       <img src="/images/logo.svg" alt="Logo de CanalMix" class="logo-img" />
       <span class="logo-text">CanalMix</span>
     </div>
-    <nav class="nav">
-      <a href="#sectionPin1" class="nav-link">Viernes</a>
-      <a href="#sectionPin2" class="nav-link">Sábado</a>
-      <a href="#sectionPin3" class="nav-link">Domingo</a>
-    </nav>
   </header>
 
   <!-- PRESENTACIÓN de la visualización -->
@@ -248,7 +273,7 @@ onMount(() => {
   <div class="leyenda">
     <img src="/images/Referencias.svg" alt="Leyenda explicativa de notas, géneros y días" />
   </div>
-
+<div class="bloque-pentagramas">
   <!-- Scroll horizontal Viernes  -->
   <section id="sectionPin1"  style="height: {calcularAlturaSeccion(calcularAnchoSVG(viernesFiltrado))};">
     <div class="pin-wrap-sticky">
@@ -405,49 +430,9 @@ onMount(() => {
       </div>
     </div>
   </section>
-    <section class="bloque-titulo">
-      <h2 class="titulo-seccion">
-        Explora y filtra como quieras lo que escuchó la gente el fin de semana
-      </h2>
-      <p class="subtitulo-seccion">
-        Cada círculo representa a una persona. Agrupadas por día, actividad, tiempo, energía y género musical, exploralo como quieras.
-      </p>
-    </section>
-
-    <section> 
-      <div id="my-wrapper" style="width: auto;">
-        <!-- Reemplazar el ID de jeemplo por el de la story propia -->
-        <div class="flourish-embed" data-src="story/3177881" data-url="https://public.flourish.studio/story/3177881/thumbnail" ></div>
-          
-        
-
-        <!-- Iteramos sobre las distintas slides del componente de Flourish -->
-        {#each slides as slide, index}
-          <p>
-            {@html slide}
-            <!-- svelte-ignore a11y-missing-content -->
-            <a href={"#story/3177881/slide-" + (index + 1)}></a>
-          </p>
-        {/each}
-      </div>
-    </section>
-
-    <section class="bloque-titulo conclusion">
-      <p>
-        Los datos muestran que la música que escuchamos cambia según el día: <strong>viernes y sábados</strong> dominan los géneros enérgicos como el reggaetón y la electrónica, ligados a lo social y festivo, mientras que los <strong>domingos</strong> prevalecen estilos más tranquilos como el rock nacional, vinculados al descanso y la relajación.. Esto refleja cómo la música acompaña nuestros estados de ánimo y rutinas, y cómo el día influye directamente en nuestras elecciones musicales.
-      </p>
-      
-    </section>
-    
-    
-
-
-    
-   
-    
-
-  <!-- BOTÓN flotante de ayuda -->
-  <div class="boton-ayuda" on:click={() => mostrarReferencias = !mostrarReferencias} title="Ver ayuda">
+{#if mostrarBotones}
+    <!-- BOTÓN flotante de ayuda -->
+  <div class="boton-ayuda" on:click={() => mostrarReferencias = !mostrarReferencias} title="Ver ayuda" transition:scale={{ duration: 800, start: 0.8 }} >
     ?
   </div>
   <!-- MODAL de referencias -->
@@ -459,12 +444,13 @@ onMount(() => {
     </div>
   {/if}
   <!-- Botón flotante para menú -->
-  <div class="boton-menu" on:click={() => menuAbierto = !menuAbierto} title="Navegar días">
-    ☰
-  </div>
+<div class="boton-menu" on:click={() => menuAbierto = !menuAbierto} title="Navegar días" transition:scale={{ duration: 800, start: 0.8 }}>
+  <i class="fa-solid fa-calendar-days"></i>
+</div>
+
 
   <!-- BOTÓN FLOTANTE DE FILTRO GLOBAL -->
-<button class="boton-filtro-global" on:click={() => menuFiltroAbierto = !menuFiltroAbierto}>
+<button class="boton-filtro-global" on:click={() => menuFiltroAbierto = !menuFiltroAbierto} transition:scale={{ duration: 800, start: 0.8 }}>
   <i class="fa-solid fa-filter"></i>
 </button>
 
@@ -484,7 +470,7 @@ onMount(() => {
                   <button class="nav-link {filtroNotas === 'corchea' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('corchea')}>Fiesta</button>
                   <button class="nav-link {filtroNotas === 'negra' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('negra')}>Estudiando</button>
                   <button class="nav-link {filtroNotas === 'blanca' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('blanca')}>Viajando</button>
-                  <button class="nav-link {filtroNotas === 'redonda' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('redonda')}>Otra cosa</button>
+                  <button class="nav-link {filtroNotas === 'redonda' ? 'activo' : ''}" on:click={() => toggleFiltroNotas('redonda')}>Otro</button>
                 </div>
               {/if}
               <!-- Submenú Energía -->
@@ -529,6 +515,43 @@ onMount(() => {
     </div>
   {/if}
 
+  {/if}
+
+</div>
+  
+    <section class="bloque-titulo">
+      <h2 class="titulo-seccion">
+        Explora y filtra como quieras lo que escuchó la gente el fin de semana
+      </h2>
+      <p class="subtitulo-seccion">
+        Cada círculo representa a una persona. Agrupadas por día, actividad, tiempo, energía y género musical, exploralo como quieras.
+      </p>
+    </section>
+
+    <section> 
+      <div id="my-wrapper" style="width: auto;">
+        <!-- Reemplazar el ID de jeemplo por el de la story propia -->
+        <div class="flourish-embed" data-src="story/3177881" data-url="https://public.flourish.studio/story/3177881/thumbnail" ></div>
+          
+        
+
+        <!-- Iteramos sobre las distintas slides del componente de Flourish -->
+        {#each slides as slide, index}
+          <p>
+            {@html slide}
+            <!-- svelte-ignore a11y-missing-content -->
+            <a href={"#story/3177881/slide-" + (index + 1)}></a>
+          </p>
+        {/each}
+      </div>
+    </section>
+
+    <section class="conclusion">
+      <p>
+        Los datos muestran que la música que escuchamos cambian: <strong>viernes y sábados</strong> dominan los géneros enérgicos como el reggaetón y la electrónica, ligados a lo social y festivo, mientras que los <strong>domingos</strong> prevalecen estilos más tranquilos como el rock nacional, vinculados al descanso y la relajación.. Esto refleja cómo la música acompaña nuestros estados de ánimo y rutinas, y cómo el día influye directamente en nuestras elecciones musicales.
+      </p>
+      
+    </section>
     
 
 </main>

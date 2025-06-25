@@ -596,7 +596,7 @@ body {
   max-width: 400px !important;
 }
 
-.conclusion p {
+.conclusion {
   font-family: 'Karla', sans-serif;
   font-size: 1.1rem;
   line-height: 1.7;
@@ -605,5 +605,9 @@ body {
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
+  text-align: left;
+}
+
+.bloque-pentagramas {
+  position: relative;
 }
