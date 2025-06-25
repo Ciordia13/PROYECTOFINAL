@@ -548,7 +548,7 @@ onMount(() => {
 
     <section class="conclusion">
       <p>
-        Los datos muestran que la música que escuchamos cambian: <strong>viernes y sábados</strong> dominan los géneros enérgicos como el reggaetón y la electrónica, ligados a lo social y festivo, mientras que los <strong>domingos</strong> prevalecen estilos más tranquilos como el rock nacional, vinculados al descanso y la relajación.. Esto refleja cómo la música acompaña nuestros estados de ánimo y rutinas, y cómo el día influye directamente en nuestras elecciones musicales.
+        Los datos muestran que la música que escuchamos cambian: <strong>viernes y sábados</strong> dominan los géneros enérgicos como el reggaetón y la electrónica, ligados a lo social y festivo, mientras que los <strong>domingos</strong> prevalecen estilos más tranquilos como el rock nacional, vinculados al descanso y la relajación. Esto refleja cómo la música acompaña nuestros estados de ánimo y rutinas, y cómo el día influye directamente en nuestras elecciones musicales.
       </p>
       
     </section>
