@@ -175,14 +175,14 @@ function filtrarGlobal(datos, notas, energia, tiempo, genero) {
   let header;
 
   const slides = [
-    "Cada circulito verde representa a una persona que escuchó música el finde. Están todos listos para contarnos que escucharon.",
-    "Acá se revelan los gustos: rock y reggaetón se roban la pista. Cumbia y pop suman su ritmo, mientras electrónica y otros generos aparecen tímidamente.",
-    "El viernes arranca bien mezclado y el sábado explota de colores. El domingo se relaja un poco, pero el rock sigue firme. Cada día trae su mood… y su música.",
-    "Ahora vemos cómo se reparte el sonido del finde entre viernes, sábado y domingo. Spoiler: el reggaetón  y el rock son el alma de la fiesta sin importar el día.",
-    "¿Estás estrenando? Probablemente escuchás rock o pop. ¿De fiesta? Aparece más el reggaetón y la cumbia. Cada actividad tiene su propio mix musical lleno de energía",
-    "El sábado es más de fiesta, el domingo trae relax, viajes y estudio. Viernes es ese punto medio donde arranca todo. Cada día tiene su vibra, y la música lo acompaña.",
-    "Los círculos cambian de tamaño y nos cuentan cuánto tiempo se sumergieron en la música. El sábado parece ser el día de auriculares todo el día.",
-    "La música no solo se escucha, ¡se siente!. Algunas personas terminaron vibrando alto, otras se relajaron, bajaron un cambio… Vemos como escuchar musica puede cambiar el ánimo.",  
+    "<strong>Cada círculito representa a una persona que escuchó música el finde.</strong> <br> Están todos listos para contarnos qué escucharon.",
+    "<strong>Acá se revelan los gustos:</strong><br> Rock y reggaetón se roban la pista. Cumbia y pop suman su ritmo, mientras electrónica y otros géneros aparecen tímidamente.",
+    "<strong>El viernes arranca bien mezclado y el sábado explota de colores. El domingo se relaja un poco, pero el rock sigue firme.</strong><br>Cada día trae su mood y su música.",
+    "<strong>Ahora vemos cómo se reparte el sonido del finde entre viernes, sábado y domingo.</strong><br> Spoiler: el reggaetón y el rock son el alma de la fiesta sin importar el día.",
+    "<strong>¿Estás estrenando? Probablemente escuchás rock o pop. ¿De fiesta? Aparece más el reggaetón y la cumbia.</strong><br> Cada actividad tiene su propio mix musical lleno de energía",
+    "<strong>El sábado es más de fiesta, el domingo trae relax, viajes y estudio. Viernes es ese punto medio donde arranca todo. </strong><br>Cada día tiene su vibra, y la música lo acompaña.",
+    "<strong>Los círculos cambian de tamaño y nos cuentan cuánto tiempo se sumergieron en la música.</strong><br> El sábado parece ser el día de auriculares todo el día.",
+    "<strong>La música no solo se escucha, ¡se siente!.</strong><br> Algunas personas terminaron vibrando alto, otras se relajaron, bajaron un cambio <br> Vemos como escuchar musica puede cambiar el ánimo.",
   ]
 
   function loadFlourishScrolly() {
@@ -333,7 +333,7 @@ onMount(() => {
   <div class="pin-wrap-sticky">
     <div class="pin-wrap" style="width: {calcularAnchoSVG(sabadoFiltrado)}px;">
       <div class="titulo-con-filtro">
-        <h2><b>Sabado</b></h2>
+        <h2><b>Sábado</b></h2>
       </div>
         <svg width={calcularAnchoSVG(sabadoFiltrado)} height="300">
           {#each Array(5) as _, i}
@@ -521,7 +521,7 @@ onMount(() => {
   
     <section class="bloque-titulo">
       <h2 class="titulo-seccion">
-        Explora y filtra como quieras lo que escuchó la gente el fin de semana
+        Explorá y filtrá como quieras lo que escuchó la gente el fin de semana
       </h2>
       <p class="subtitulo-seccion">
         Cada círculo representa a una persona. Agrupadas por día, actividad, tiempo, energía y género musical, exploralo como quieras.
@@ -548,7 +548,7 @@ onMount(() => {
 
     <section class="conclusion">
       <p>
-        Los datos muestran que la música que escuchamos cambian: <strong>viernes y sábados</strong> dominan los géneros enérgicos como el reggaetón y la electrónica, ligados a lo social y festivo, mientras que los <strong>domingos</strong> prevalecen estilos más tranquilos como el rock nacional, vinculados al descanso y la relajación.. Esto refleja cómo la música acompaña nuestros estados de ánimo y rutinas, y cómo el día influye directamente en nuestras elecciones musicales.
+        Los datos muestran que la música que escuchamos cambian: <strong>viernes y sábados</strong> dominan los géneros enérgicos como el reggaetón y la electrónica, ligados a lo social y festivo, mientras que los <strong>domingos</strong> prevalecen estilos más tranquilos como el rock nacional, vinculados al descanso y la relajación. Esto refleja cómo la música acompaña nuestros estados de ánimo y rutinas, y cómo el día influye directamente en nuestras elecciones musicales.
       </p>
       
     </section>
@@ -602,8 +602,9 @@ onMount(() => {
   align-items: center;
   margin: 40px auto;
   padding: 30px;
-  background-color: transparent;
+  background-color: #888888; /* igual que el fondo del SVG */
   border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   max-width: 95%;
   opacity: 0;
   transform: translateY(30px);
