@@ -45,28 +45,6 @@ body {
   margin-left: 20px;
 }
 
-.referencias-flotante {
-  position: fixed;
-  bottom: 100px;
-  right: 30px;
-  background-color: #dcdcdc;
-  border: 2px solid #ccc;
-  border-radius: 12px;
-  padding: 12px;
-  max-width: 360px;
-  width: 360px;
-  height: auto;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  z-index: 1000;
-  overflow: auto;
-}
-
-.referencias-flotante img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-}
 
 
 
@@ -85,10 +63,9 @@ body {
 
 
 .modal-leyenda {
-  background-color: #888888;
+  background-color: transparent;
   border-radius: 16px;
   padding: 30px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   max-width: 90vw;
   max-height: 90vh;
   display: flex;

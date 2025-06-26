@@ -602,9 +602,8 @@ onMount(() => {
   align-items: center;
   margin: 40px auto;
   padding: 30px;
-  background-color: #888888; /* igual que el fondo del SVG */
+  background-color: transparent;
   border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   max-width: 95%;
   opacity: 0;
   transform: translateY(30px);
